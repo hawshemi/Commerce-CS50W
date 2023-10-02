@@ -1,0 +1,23 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <div class = "container"> <h1>{{header}}</h1></div>
+    {% for listing in listings %}
+    <br>
+    <div class = "container_fluid jumbotron">
+        <h1>{{listing.id}}.</h1>
+        <div style = "font-family: cursive;">Listed By: <b>{{listing.user}}</b></div>
+        <h2><a href="{% url 'listing' listing.id %}">{{listing.title}}</a></h2>
+        {% if listing.img_url %}
+            <div><img style = "width: 30vw;" src = "{{listing.img_url}}" alt=""></div>
+        {% endif %}
+        <p style = "color:darkgray; font-family:'Courier New', Courier, monospace">{{listing.description}}</p>
+        {% for bid in bids %}
+            {% if bid.listing == listing %}
+                <p>Current Bid: <span style = "color:gold; font-weight:bold; font-size:large">${{bid.value}}</span></p>
+            {% endif %}
+        {% endfor %}
+        <p>Starting Bid: <span style = "color:gold; font-weight:bold; font-size:large">${{listing.starting_bid}}</span></p>
+        </div>
+    {% endfor %}
+{% endblock %}

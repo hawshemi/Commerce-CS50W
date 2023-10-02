@@ -1,0 +1,12 @@
+body {
+    font-family: "Lato", sans-serif;
+    padding-top: 2rem;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+* {
+    margin: 1rem;
+}
+
